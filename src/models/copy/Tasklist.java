@@ -7,10 +7,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tasklist")
+
+@NamedQueries({
+    @NamedQuery(
+        name = "getAllTasklists",
+        query = "SELECT m FROM Tasklist AS m ORDER BY m.id DESC"
+    ),
+
+    @NamedQuery(
+            name = "getTasklistsCount",
+            query = "SELECT COUNT(m) FROM Tasklist AS m"
+            )
+})
+
+
+@Table(name = "tasklists")
 public class Tasklist {
     @Id
     @Column(name = "id")

@@ -44,18 +44,18 @@ public class IndexServlet extends HttpServlet {
         } catch(NumberFormatException e) {}
 
         // 最大件数と開始位置を指定してメッセージを取得
-        List<Tasklist> tasklist = em.createNamedQuery("getAllTasklist", Tasklist.class)
+        List<Tasklist> tasklists = em.createNamedQuery("getAllTasklists", Tasklist.class)
                                    .setFirstResult(15 * (page - 1))
                                    .setMaxResults(15)
                                    .getResultList();
 
         // 全件数を取得
-        long tasklist_count = (long)em.createNamedQuery("getTasklistCount", Long.class)
+        long tasklist_count = (long)em.createNamedQuery("getTasklistsCount", Long.class)
                                       .getSingleResult();
 
         em.close();
 
-        request.setAttribute("tasklist", tasklist);
+        request.setAttribute("tasklists", tasklists);
         request.setAttribute("tasklist_count", tasklist_count);     // 全件数
         request.setAttribute("page", page);                         // ページ数
 
