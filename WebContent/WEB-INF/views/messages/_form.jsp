@@ -11,7 +11,7 @@
 </c:if>
 
 
-<label>メッセージ<br />
+<label>タスク<br />
 <input type="text"  name="content" value="${tasklist.content}"/>
 </label>
 <br /><br />
